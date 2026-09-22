@@ -1,0 +1,10 @@
+# secrets & local state
+*.env
+.env
+04_python/archive/
+# python
+__pycache__/
+.ipynb_checkpoints/
+# office temp
+~$*
+*.tmp
