@@ -1,0 +1,4 @@
+# GitHub language stats: notebooks are Python, count SQL, VBA is study material
+*.ipynb linguist-language=Python
+*.sql   linguist-detectable=true
+*.bas   linguist-vendored
