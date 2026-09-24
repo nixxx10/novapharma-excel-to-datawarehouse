@@ -48,6 +48,13 @@ What changes for the team: one source of truth instead of one file per person, r
 4. Monthly load: set the env var `NOVAPHARMA_DB_PWD`, adjust `04_python/config.ini`, then
    `python 04_python/etl_novapharma.py ERP_Sales_202609.csv`
 
+## LinkedIn series
+
+| Post | Steps | Link |
+|---|---|---|
+| 1/5 | Step 0 — the strategy | [linkedin.com](https://www.linkedin.com/feed/update/urn:li:activity:7508117104609390592/) |
+| 2/5 | Steps 1 & 2 — 3 lessons from reverse-engineering the model | [linkedin.com](https://www.linkedin.com/feed/update/urn:li:activity:7508830718685483009/) |
+
 ## What I learned
 
 - Excel hides errors; a database refuses them. Quarantine bad rows, never delete them.
