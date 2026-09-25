@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "NovaPharma Iberia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2e52c778-6c93-42b9-96ec-7013c7d95f68"
+  }
+}

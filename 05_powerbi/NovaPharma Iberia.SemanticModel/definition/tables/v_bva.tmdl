@@ -1,0 +1,84 @@
+table v_bva
+	lineageTag: 61ca736b-4f44-4a94-9d49-aa3ae69b364e
+
+	column version_name
+		dataType: string
+		lineageTag: 4b1d9545-e6f7-4f58-a23c-e7d157a02f1d
+		summarizeBy: none
+		sourceColumn: version_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6b45711c-a6bd-4ad5-bf90-3d75613a14c9
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku_code
+		dataType: string
+		isHidden
+		lineageTag: b2976d91-c406-4b6a-bc13-e3457e230ff8
+		summarizeBy: none
+		sourceColumn: sku_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_code
+		dataType: string
+		isHidden
+		lineageTag: fae2e46b-5f47-4deb-8a0f-e3bf33e3103e
+		summarizeBy: none
+		sourceColumn: territory_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: double
+		isHidden
+		lineageTag: 999b43d1-02a8-4ab9-90a4-66159a278b4f
+		summarizeBy: sum
+		sourceColumn: units
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_sales_eur
+		dataType: double
+		isHidden
+		lineageTag: 6182281b-5e19-4143-861f-d98dfa7b4cae
+		summarizeBy: sum
+		sourceColumn: net_sales_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition v_bva = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_v_bva = Origen{[Schema="novapharma_dw",Item="v_bva"]}[Data]
+				in
+				    novapharma_dw_v_bva
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

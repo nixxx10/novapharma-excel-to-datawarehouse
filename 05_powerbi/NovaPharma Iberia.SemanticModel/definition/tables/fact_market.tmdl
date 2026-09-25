@@ -1,0 +1,75 @@
+table fact_market
+	lineageTag: 76825efe-8cad-417a-b639-7a9c2e9c7818
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c3060c11-dbe5-4000-abf0-2c0290617ba2
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand_name
+		dataType: string
+		isHidden
+		lineageTag: 182afd18-ffbc-4208-bc0a-0dedb0a42c9e
+		summarizeBy: none
+		sourceColumn: brand_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_code
+		dataType: string
+		isHidden
+		lineageTag: efc702e9-af0d-4ab0-a68b-08f6d17f7246
+		summarizeBy: none
+		sourceColumn: territory_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7850a197-94b3-4606-9443-9f9842a197a6
+		summarizeBy: sum
+		sourceColumn: market_units
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_value_eur
+		dataType: double
+		isHidden
+		lineageTag: 5f79948a-5909-416d-90f1-dafdff5e0e82
+		summarizeBy: sum
+		sourceColumn: market_value_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_market = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_fact_market = Origen{[Schema="novapharma_dw",Item="fact_market"]}[Data]
+				in
+				    novapharma_dw_fact_market
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

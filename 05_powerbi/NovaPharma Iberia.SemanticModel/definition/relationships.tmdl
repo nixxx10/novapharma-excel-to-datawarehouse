@@ -1,0 +1,54 @@
+relationship a9fc78e4-c757-46ff-bb25-4d5a8e06d4f3
+	fromColumn: dim_product.brand_name
+	toColumn: dim_brand.brand_name
+
+	annotation PBI_IsFromSource = FS
+
+relationship f47103aa-d67a-4355-8407-f17147b6863a
+	fromColumn: fact_market.brand_name
+	toColumn: dim_brand.brand_name
+
+	annotation PBI_IsFromSource = FS
+
+relationship 19f7a5b0-0bb2-4f1d-b85d-fdb059bd4b14
+	fromColumn: fact_market.month_key
+	toColumn: dim_calendar.month_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 6b8f2995-17cb-4e2b-bf91-132ce3ebf6ae
+	fromColumn: fact_market.territory_code
+	toColumn: dim_territory.territory_code
+
+	annotation PBI_IsFromSource = FS
+
+relationship fd14bfd2-2d65-4b78-b0ff-f342e7dc9958
+	fromColumn: dim_customer.territory_code
+	toColumn: dim_territory.territory_code
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3c5f7cb8-228d-3b90-9541-0d1cfc7ebe1c
+	fromColumn: v_sales_enriched.customer_code
+	toColumn: dim_customer.customer_code
+
+relationship 6b20db54-7060-98ba-2ef0-5879406bf75b
+	fromColumn: v_sales_enriched.month_key
+	toColumn: dim_calendar.month_key
+
+relationship 859de28c-f1f5-d60d-b218-245cce55ff27
+	fromColumn: v_sales_enriched.sku_code
+	toColumn: dim_product.sku_code
+
+relationship 85280a4b-f6f8-2211-c60d-cec5ba9173d4
+	fromColumn: v_bva.month_key
+	toColumn: dim_calendar.month_key
+
+relationship 0d4d8c15-02ba-a1e1-ce28-8e3302d500e3
+	fromColumn: v_bva.sku_code
+	toColumn: dim_product.sku_code
+
+relationship 90f3a887-653b-8296-1181-59eada9ad0b6
+	fromColumn: v_bva.territory_code
+	toColumn: dim_territory.territory_code
+

@@ -1,0 +1,70 @@
+table dim_territory
+	lineageTag: 818dcc8f-3ed1-459d-9f39-06b638513991
+
+	column territory_code
+		dataType: string
+		lineageTag: 87d72bac-de0e-4b2a-ac2c-e7da7acef3d1
+		summarizeBy: none
+		sourceColumn: territory_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_name
+		dataType: string
+		lineageTag: b74acdb7-b220-466e-a0dd-871fb046dc91
+		summarizeBy: none
+		sourceColumn: territory_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 84de1993-039e-4f04-aff5-9ff3c641b0e6
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: fec65f2a-af1d-4024-a28a-e0a8b3061eb3
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_rep
+		dataType: string
+		lineageTag: d63ceaf8-3826-411c-ba1b-54824e9d9af9
+		summarizeBy: none
+		sourceColumn: sales_rep
+
+		annotation SummarizationSetBy = Automatic
+
+	column rep_start_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 34bd0762-4f98-4180-934f-46c96b71bdb6
+		summarizeBy: none
+		sourceColumn: rep_start_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_territory = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_territory = Origen{[Schema="novapharma_dw",Item="dim_territory"]}[Data]
+				in
+				    novapharma_dw_dim_territory
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

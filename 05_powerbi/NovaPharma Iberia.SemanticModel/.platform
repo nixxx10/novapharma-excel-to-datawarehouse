@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "NovaPharma Iberia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a5cc83a0-ad5c-436a-8ab4-e674aadab074"
+  }
+}

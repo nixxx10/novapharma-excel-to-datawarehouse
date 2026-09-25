@@ -1,0 +1,82 @@
+table _measures
+	lineageTag: e4bcf7a1-fced-4b2b-83bb-76212f5c1f21
+
+	measure 'Net Sales' = SUM(v_sales_enriched[net_sales_eur])
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		displayFolder: 1 Base
+		lineageTag: 4bf358a8-dab1-4a3d-a2e9-2ba02732a40f
+
+	measure Units = SUM(v_sales_enriched[units])
+		formatString: #,0
+		displayFolder: 1 Base
+		lineageTag: b0c39bee-02bb-478c-b32a-ada4deded950
+
+	measure 'Gross Margin' = SUM(v_sales_enriched[gross_margin_eur])
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		displayFolder: 1 Base
+		lineageTag: 85abb6c4-3873-4399-8ea6-fc2f6e15d5bc
+
+	measure 'Market Value' = SUM(fact_market[market_value_eur])
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		displayFolder: 1 Base
+		lineageTag: 1db4f812-05d1-45f6-8cd1-5a3dc0b52ff6
+
+	measure 'Plan Net Sales' =
+			
+			CALCULATE(
+			    SUM(v_bva[net_sales_eur]),
+			    LEFT(v_bva[version_name], 6) = "Budget"
+			)
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		displayFolder: 1 Base
+		lineageTag: 3d9874c6-9c07-42a2-8255-95e996ba67e4
+
+	measure 'GM %' = DIVIDE([Gross Margin], [Net Sales])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 KPIs
+		lineageTag: 4662b7b8-2b2f-429a-bdcd-e173a8c616aa
+
+	measure 'Market Share %' = DIVIDE([Net Sales], [Market Value])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 KPIs
+		lineageTag: c182ff44-1272-4a8e-b3b3-bdb6d30654c3
+
+	measure 'Net Sales YTD' =
+			
+			VAR max_month = MAX(dim_calendar[month_start])
+			RETURN
+			CALCULATE(
+			    [Net Sales],
+			    REMOVEFILTERS(dim_calendar),
+			    dim_calendar[year] = YEAR(max_month),
+			    dim_calendar[month_start] <= max_month
+			)
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		displayFolder: 2 KPIs
+		lineageTag: 5157d72b-589d-4bf7-b407-4bd634c53604
+
+	measure 'Var vs Budget %' =
+			
+			VAR plan_closed =
+			    CALCULATE(
+			        [Plan Net Sales],
+			        FILTER(VALUES(dim_calendar[month_key]), NOT ISBLANK([Net Sales]))
+			    )
+			RETURN
+			DIVIDE([Net Sales] - plan_closed, plan_closed)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 KPIs
+		lineageTag: ad2968f6-9297-4f31-879c-3da4fd234e57
+
+	partition _measures = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

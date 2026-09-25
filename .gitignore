@@ -8,3 +8,6 @@ __pycache__/
 # office temp
 ~$*
 *.tmp
+# power bi local state
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

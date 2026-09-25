@@ -1,0 +1,59 @@
+table dim_customer
+	lineageTag: db0ad1e0-e4b9-42cd-aea0-fd9dc48bca37
+
+	column customer_code
+		dataType: string
+		lineageTag: 1f2547db-7624-4f88-94bd-68822314d3de
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: eccca1ca-a46c-4cc8-86de-f802c8668009
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 903f586f-9445-45ee-8914-4e2805a4ff38
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_code
+		dataType: string
+		isHidden
+		lineageTag: b06d933f-e24d-4f21-ace2-7081a0d67b3f
+		summarizeBy: none
+		sourceColumn: territory_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 09e0feed-266e-438d-84e2-5c0da5c1da63
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_customer = Origen{[Schema="novapharma_dw",Item="dim_customer"]}[Data]
+				in
+				    novapharma_dw_dim_customer
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

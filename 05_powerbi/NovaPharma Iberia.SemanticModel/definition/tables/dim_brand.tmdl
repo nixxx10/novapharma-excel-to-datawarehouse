@@ -1,0 +1,32 @@
+table dim_brand
+	lineageTag: 148eb8e4-6a5e-44ff-8ecc-f9a3f3c85022
+
+	column brand_name
+		dataType: string
+		lineageTag: 6572e8c9-57f8-4af3-86ae-86a38fb30e6e
+		summarizeBy: none
+		sourceColumn: brand_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column therapeutic_area
+		dataType: string
+		lineageTag: 9f145103-1906-45d9-a13a-931f13fc0245
+		summarizeBy: none
+		sourceColumn: therapeutic_area
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_brand = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_brand = Origen{[Schema="novapharma_dw",Item="dim_brand"]}[Data]
+				in
+				    novapharma_dw_dim_brand
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

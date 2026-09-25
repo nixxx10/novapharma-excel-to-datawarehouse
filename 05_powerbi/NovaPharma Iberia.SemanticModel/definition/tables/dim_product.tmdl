@@ -1,0 +1,104 @@
+table dim_product
+	lineageTag: 27443dfa-6518-4b09-b5ac-76ad23be4cdd
+
+	column sku_code
+		dataType: string
+		lineageTag: 7f8fb74e-82c5-40d5-8160-9df881f641f1
+		summarizeBy: none
+		sourceColumn: sku_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku_name
+		dataType: string
+		lineageTag: cbb6aceb-bf0e-414f-b9c0-99cf554219df
+		summarizeBy: none
+		sourceColumn: sku_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand_name
+		dataType: string
+		isHidden
+		lineageTag: 378c1535-c28e-4de3-8e88-876b3c393b14
+		summarizeBy: none
+		sourceColumn: brand_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column form_strength
+		dataType: string
+		lineageTag: 1f84fee1-ec6a-40c9-9241-a0436dedde63
+		summarizeBy: none
+		sourceColumn: form_strength
+
+		annotation SummarizationSetBy = Automatic
+
+	column launch_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ad403d54-788f-47a3-bd02-839703a586bc
+		summarizeBy: none
+		sourceColumn: launch_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column loe_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7aa90374-7c95-412a-b41b-1ec3445247f0
+		summarizeBy: none
+		sourceColumn: loe_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column list_price_eur
+		dataType: double
+		lineageTag: 0a1fbde1-edb1-4c65-894c-ac2460fd8593
+		summarizeBy: none
+		sourceColumn: list_price_eur
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cogs_per_unit_eur
+		dataType: double
+		isHidden
+		lineageTag: 71d8abf1-c09d-4f5c-8502-c7dee3c77951
+		summarizeBy: sum
+		sourceColumn: cogs_per_unit_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status
+		dataType: string
+		lineageTag: 63a38431-5c2d-4ac3-9c1c-1926c6355e25
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_product = Origen{[Schema="novapharma_dw",Item="dim_product"]}[Data]
+				in
+				    novapharma_dw_dim_product
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

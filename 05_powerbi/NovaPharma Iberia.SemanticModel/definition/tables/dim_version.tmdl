@@ -1,0 +1,65 @@
+table dim_version
+	isHidden
+	lineageTag: 3b80ca1e-defb-4688-91fa-919fe57353ab
+
+	column version_name
+		dataType: string
+		isHidden
+		lineageTag: 38904034-e74e-49c3-b6d6-345a8234fefd
+		summarizeBy: none
+		sourceColumn: version_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column version_type
+		dataType: string
+		isHidden
+		lineageTag: f5c73688-2f1c-488d-b2b7-d176293102be
+		summarizeBy: none
+		sourceColumn: version_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column plan_year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: de24f125-ee0a-4268-bb8b-eaddbc42b81a
+		summarizeBy: sum
+		sourceColumn: plan_year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column cutoff_month
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 470a38c1-c465-46c5-816b-38da5ab9c339
+		summarizeBy: sum
+		sourceColumn: cutoff_month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_version = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_version = Origen{[Schema="novapharma_dw",Item="dim_version"]}[Data]
+				in
+				    novapharma_dw_dim_version
+
+	changedProperty = Name
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

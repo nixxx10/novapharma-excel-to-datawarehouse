@@ -1,0 +1,86 @@
+table dim_calendar
+	lineageTag: a37087fc-55cd-41c4-b5a4-a28c965d5405
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1d53d4ec-3dc0-41b4-b8c7-ce2587be20ae
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a9815d49-c447-4825-80e4-7b9b9adde05a
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_name
+		dataType: string
+		lineageTag: 144ab0d6-3703-4490-b55a-77890b6a969e
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_start
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1318aa97-4593-4b09-8f22-61211a4ad6b5
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: string
+		lineageTag: 820f3f0c-45d1-43a8-b3bb-d18470f90941
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_period
+		dataType: string
+		lineageTag: 997e32d2-dfe8-4824-8db3-c153b347d9b3
+		summarizeBy: none
+		sourceColumn: fiscal_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_closed
+		dataType: string
+		isHidden
+		lineageTag: 811724d8-d26e-4814-acc2-b892274d2a41
+		summarizeBy: none
+		sourceColumn: is_closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_calendar = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_dim_calendar = Origen{[Schema="novapharma_dw",Item="dim_calendar"]}[Data]
+				in
+				    novapharma_dw_dim_calendar
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

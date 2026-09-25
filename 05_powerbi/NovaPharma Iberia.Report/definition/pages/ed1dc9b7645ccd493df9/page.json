@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ed1dc9b7645ccd493df9",
+  "displayName": "Budget vs Actual",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "293b820d40bc554764cd",
+      "target": "992e786f8c5ef82635a1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "293b820d40bc554764cd",
+      "target": "2c1971cf1caaafab0eb5",
+      "type": "NoFilter"
+    }
+  ]
+}

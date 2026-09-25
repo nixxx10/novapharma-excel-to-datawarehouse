@@ -1,0 +1,301 @@
+table v_sales_enriched
+	isHidden
+	lineageTag: 57139dd0-1a03-4cd8-9d42-a05247081026
+
+	column transaction_id
+		dataType: string
+		isHidden
+		lineageTag: a3f1232d-d214-4fec-b762-b3c7a40e8885
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: e9937d71-cfe1-4c73-8a21-579bfb6cc0cb
+		summarizeBy: none
+		sourceColumn: invoice_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b74d6458-1783-46a9-aeee-a7e57cd08bda
+		summarizeBy: none
+		sourceColumn: month_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b7d49f32-9399-486e-8541-406133b08e7d
+		summarizeBy: sum
+		sourceColumn: year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		isHidden
+		lineageTag: b2c48838-fc4f-4714-a7c9-01817fd1d691
+		summarizeBy: none
+		sourceColumn: quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku_code
+		dataType: string
+		isHidden
+		lineageTag: ee296e64-d61e-40a2-9e87-b7bd503be311
+		summarizeBy: none
+		sourceColumn: sku_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku_name
+		dataType: string
+		isHidden
+		lineageTag: fa7e02ac-0761-41bc-9bbd-895f77208a76
+		summarizeBy: none
+		sourceColumn: sku_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand_name
+		dataType: string
+		isHidden
+		lineageTag: 4929418e-9c35-4dbd-964b-3e20b5e62905
+		summarizeBy: none
+		sourceColumn: brand_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column therapeutic_area
+		dataType: string
+		isHidden
+		lineageTag: c452e813-3f03-4071-8295-886d85fda38b
+		summarizeBy: none
+		sourceColumn: therapeutic_area
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		isHidden
+		lineageTag: 9a244cde-27a9-4e6a-9c04-a0c7e3568927
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		isHidden
+		lineageTag: 4cf6d634-f795-4fbb-9c21-46cd389928c8
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		isHidden
+		lineageTag: 380c4af6-11a1-4bf7-9769-69fbe2ca6476
+		summarizeBy: none
+		sourceColumn: channel
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_code
+		dataType: string
+		isHidden
+		lineageTag: 6da28203-8607-4e23-96ae-1810c8361506
+		summarizeBy: none
+		sourceColumn: territory_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_name
+		dataType: string
+		isHidden
+		lineageTag: ab9669ae-9620-4220-9ce9-0cdaaba12f5d
+		summarizeBy: none
+		sourceColumn: territory_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 8f7289ad-d6d4-4a39-b2ed-a743957dc129
+		summarizeBy: none
+		sourceColumn: region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		isHidden
+		lineageTag: 94846c26-49cc-4294-8b2e-edeb74010955
+		summarizeBy: none
+		sourceColumn: country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_rep
+		dataType: string
+		isHidden
+		lineageTag: eda4fb5a-dc60-4a7c-8e84-1b12def74773
+		summarizeBy: none
+		sourceColumn: sales_rep
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cc6c1c00-b5bf-45dd-9c03-0dee56630dad
+		summarizeBy: sum
+		sourceColumn: units
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_sales_eur
+		dataType: double
+		isHidden
+		lineageTag: f657b270-effc-4142-aa1b-7f915d0d11e9
+		summarizeBy: sum
+		sourceColumn: gross_sales_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_eur
+		dataType: double
+		isHidden
+		lineageTag: a8dff0ae-48e0-4b2f-b553-0a4f50104c2b
+		summarizeBy: sum
+		sourceColumn: discount_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rebate_eur
+		dataType: double
+		isHidden
+		lineageTag: 7b54d39d-f4af-42c9-9ce7-cba60cf73917
+		summarizeBy: sum
+		sourceColumn: rebate_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_sales_eur
+		dataType: double
+		isHidden
+		lineageTag: 3a2d8358-d801-448e-a914-ba00b6fb39dc
+		summarizeBy: sum
+		sourceColumn: net_sales_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cogs_eur
+		dataType: double
+		isHidden
+		lineageTag: ef559905-df01-47d7-b837-f7a4410c550b
+		summarizeBy: sum
+		sourceColumn: cogs_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_margin_eur
+		dataType: double
+		isHidden
+		lineageTag: 51d2298d-3939-46c3-982f-1bb43893b327
+		summarizeBy: sum
+		sourceColumn: gross_margin_eur
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition v_sales_enriched = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("localhost:3307", "novapharma_dw", [ReturnSingleDatabase=true]),
+				    novapharma_dw_v_sales_enriched = Origen{[Schema="novapharma_dw",Item="v_sales_enriched"]}[Data]
+				in
+				    novapharma_dw_v_sales_enriched
+
+	changedProperty = Name
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

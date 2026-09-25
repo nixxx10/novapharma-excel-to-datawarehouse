@@ -1,0 +1,28 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["v_bva","v_sales_enriched","dim_brand","dim_calendar","dim_product","dim_territory","dim_version","fact_market","dim_customer","_measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table v_bva
+ref table v_sales_enriched
+ref table dim_brand
+ref table dim_calendar
+ref table dim_product
+ref table dim_territory
+ref table dim_version
+ref table fact_market
+ref table dim_customer
+ref table _measures
+
+ref cultureInfo es-ES
+
