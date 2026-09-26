@@ -60,6 +60,7 @@ What changes for the team: one source of truth instead of one file per person, r
 |---|---|---|
 | 1/5 | Step 0 — the strategy | [linkedin.com](https://www.linkedin.com/feed/update/urn:li:activity:7508117104609390592/) |
 | 2/5 | Steps 1 & 2 — 3 lessons from reverse-engineering the model | [linkedin.com](https://www.linkedin.com/feed/update/urn:li:activity:7508830718685483009/) |
+| 3/5 | Step 3 — ETL: historical load, then a monthly automated pipeline | [linkedin.com](https://lnkd.in/p/eg_6SF7V) |
 
 ## What I learned
 
