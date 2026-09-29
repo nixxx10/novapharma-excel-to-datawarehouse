@@ -1,6 +1,6 @@
 # NovaPharma Iberia — from an Excel model to a data warehouse
 
-> **Status: in progress** (Steps 0–4 done, Step 5 closure next). Synthetic data, fictional company.
+> **Status: done** (Steps 0–5 completed, September 2026). Synthetic data, fictional company.
 
 ## The problem
 
@@ -43,6 +43,7 @@ What changes for the team: one source of truth instead of one file per person, r
 | 4.A | Power BI model: SQL views, import, relationships | `03_sql/02_views.sql`, `docs/Step4A_*.pdf` |
 | 4.B | DAX measures: why measures and not columns | `05_powerbi/`, `docs/Step4B_*.pdf` |
 | 4.C | Visuals: Overview, Budget vs Actual, About | `05_powerbi/`, `docs/Step4C_*.pdf` |
+| 5 | Closure: what replaced what, why the separation is better, what stays open | `docs/Step5_*.pdf` |
 
 ## How to reproduce
 
@@ -62,6 +63,7 @@ What changes for the team: one source of truth instead of one file per person, r
 | 2/5 | Steps 1 & 2 — 3 lessons from reverse-engineering the model | [linkedin.com](https://www.linkedin.com/feed/update/urn:li:activity:7508830718685483009/) |
 | 3/5 | Step 3 — ETL: historical load, then a monthly automated pipeline | [linkedin.com](https://lnkd.in/p/eg_6SF7V) |
 | 4/5 | Step 4 — Power BI: from the model to the visuals | [linkedin.com](https://lnkd.in/p/efKvYxBp) |
+| 5/5 | Step 5 — Closure: five jobs, one tool for each | [linkedin.com](https://lnkd.in/p/eSHCNJ2Z) |
 
 ## What I learned
 
